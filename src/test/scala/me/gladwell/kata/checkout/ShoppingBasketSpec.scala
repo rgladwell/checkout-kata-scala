@@ -15,8 +15,16 @@ object ShoppingBasketSpec extends Specification {
 
     trait TestShoppingBasket extends TestCatalogue with ShoppingBasket
 
-    "should add an item" in new TestShoppingBasket {
+    "should add an item on scan" in new TestShoppingBasket {
       basket.scan(5).items must_== Seq(Product(5, "Leather Jacket", 199.99))
+    }
+
+    "should remove an item on unscan" in new TestShoppingBasket {
+      basket.scan(5).unscan(5).items must_== Seq()
+    }
+
+    "should remove only on item on unscan" in new TestShoppingBasket {
+      basket.scan(5).scan(5).unscan(5).items must_== Seq(Product(5, "Leather Jacket", 199.99))
     }
 
   }

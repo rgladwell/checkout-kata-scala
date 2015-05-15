@@ -27,6 +27,10 @@ object ShoppingBasketSpec extends Specification {
       basket.scan(5).scan(5).unscan(5).items must_== Seq(Product(5, "Leather Jacket", 199.99))
     }
 
+    "should total items" in new TestShoppingBasket {
+      basket.scan(5).scan(5).unscan(5).scan(6).scan(6).total must_== 240.99
+    }
+
   }
 
 }

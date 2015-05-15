@@ -23,7 +23,7 @@ object ShoppingBasketSpec extends Specification {
       basket.scan(5).unscan(5).items must_== Seq()
     }
 
-    "should remove only on item on unscan" in new TestShoppingBasket {
+    "should remove only one item on unscan" in new TestShoppingBasket {
       basket.scan(5).scan(5).unscan(5).items must_== Seq(Product(5, "Leather Jacket", 199.99))
     }
 
